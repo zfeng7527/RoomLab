@@ -2,6 +2,7 @@ package Game;
 
 import People.Person;
 import Rooms.Room;
+import Rooms.SenpaisRoom;
 import Rooms.WinningRoom;
 	
 import java.util.Scanner;
@@ -29,7 +30,13 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
-		 
+
+		while(building[x][y] != null) {
+			x = (int) (Math.random() * building.length);
+			y = (int) (Math.random() * building.length);
+			building[x][y] = new SenpaisRoom(x, y);
+		} //make sure Senapi's Room is not the same as the winning room.
+
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
 		building[0][0].enterRoom(player1);
